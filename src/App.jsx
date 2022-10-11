@@ -233,8 +233,6 @@ const App = () => {
 
 	const renderNotConnectedContainer = () => (
 		<div className="connect-wallet-container">
-			<img src="https://media.giphy.com/media/3ohhwytHcusSCXXOUg/giphy.gif" alt="Ninja donut gif" />
-			{/* Call the connectWallet function we just wrote when the button is clicked */}
 			<button onClick={connectWallet} className="cta-button connect-wallet-button">
 				Connect Wallet
 			</button>
@@ -345,7 +343,7 @@ const App = () => {
 				<div className="header-container">
 					<header>
 						<div className="left">
-							<p className="title">🐱‍👤 Ninja Name Service</p>
+							<p className="title">🐙 Oct Name Service</p>
 							<p className="subtitle">Your immortal API on the blockchain!</p>
 						</div>
 						{/* Display a logo and wallet connection status*/}
