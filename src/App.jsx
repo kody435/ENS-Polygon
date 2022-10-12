@@ -7,7 +7,7 @@ import React, { useEffect, useState } from "react";
 import polygonLogo from "./assets/polygonlogo.png";
 
 const tld = ".oct";
-const CONTRACT_ADDRESS = '0x71712705D5F2B70A6B8d5b2fC58710B7ba912239';
+const CONTRACT_ADDRESS = '0x2245083Ab24dad0cd6f583aAb5bdE79c2251F61d';
 
 const App = () => {
 	const [mints, setMints] = useState([]);
@@ -232,8 +232,8 @@ const App = () => {
 	};
 
 	const renderNotConnectedContainer = () => (
-		<div className="connect-wallet-container">
-			<button onClick={connectWallet} className="cta-button connect-wallet-button">
+		<div className="connect-container">
+			<button onClick={connectWallet} className="connect-button">
 				Connect Wallet
 			</button>
 		</div>
@@ -275,7 +275,6 @@ const App = () => {
 				console.log(error);
 			}
 		} else {
-			// If window.ethereum is not found then MetaMask is not installed
 			alert("MetaMask is not installed. Please install it to use this app: https://metamask.io/download.html");
 		}
 	};
@@ -283,9 +282,9 @@ const App = () => {
 	const renderInputForm = () => {
 		if (network !== "Polygon Mumbai Testnet") {
 			return (
-				<div className="connect-wallet-container">
+				<div className="connect-wallet">
 					<p>Please connect to Polygon Mumbai Testnet</p>
-					<button className="cta-button mint-button" onClick={switchNetwork}>
+					<button className="cta-button" onClick={switchNetwork}>
 						Click here to switch
 					</button>
 				</div>
@@ -300,16 +299,13 @@ const App = () => {
 				</div>
 
 				<input type="text" value={record} placeholder="whats ur ninja power?" onChange={(e) => setRecord(e.target.value)} />
-				{/* If the editing variable is true, return the "Set record" and "Cancel" button */}
 				{editing ? (
 					<div className="button-container">
-                        // This will call the updateDomain function we just made
-						<button className="cta-button mint-button" disabled={loading} onClick={updateDomain}>
+						<button className="mint-button" disabled={loading} onClick={updateDomain}>
 							Set record
 						</button>
-                        // This will let us get out of editing mode by setting editing to false
 						<button
-							className="cta-button mint-button"
+							className="mint-button"
 							onClick={() => {
 								setEditing(false);
 							}}
@@ -318,10 +314,9 @@ const App = () => {
 						</button>
 					</div>
 				) : (
-					// If editing is not true, the mint button will be returned instead
-					<button className="cta-button mint-button" disabled={loading} onClick={mintDomain}>
-						Mint
-					</button>
+					<div className="mint-button" disabled={loading} onClick={mintDomain}>
+						MINT
+					</div>
 				)}
 			</div>
 		);
@@ -339,19 +334,18 @@ const App = () => {
 
 	return (
 		<div className="App">
-			<div className="container">
+			<div className="container-1">
 				<div className="header-container">
 					<header>
 						<div className="left">
-							<p className="title">🐙 Oct Name Service</p>
-							<p className="subtitle">Your immortal API on the blockchain!</p>
+							<p className="title">Oct ENS 🚀</p>
 						</div>
-						{/* Display a logo and wallet connection status*/}
+
 						<div className="right">
 							<img alt="Network logo" className="logo" src={network.includes("Polygon") ? polygonLogo : ethLogo} />
 							{currentAccount ? (
 								<p>
-									Wallet: {currentAccount.slice(0, 5)}...{currentAccount.slice(-5)}{" "}
+									Wallet: {currentAccount.slice(0, 4)}...{currentAccount.slice(-4)}{" "}
 								</p>
 							) : (
 								<p> Not connected </p>
